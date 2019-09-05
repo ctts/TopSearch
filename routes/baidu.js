@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express();
+var router = express.Router();
 const superagent = require('superagent');
 const cheerio = require('cheerio');
 require('superagent-charset')(superagent)
 
-let hot = [];
+let hotData = [];
 
 superagent.get('http://top.baidu.com/buzz?b=1&fr=topindex')
     .charset()
@@ -13,8 +13,7 @@ superagent.get('http://top.baidu.com/buzz?b=1&fr=topindex')
             // 如果访问失败
             console.log('抓取失败，', err);
         } else {
-            // console.log(res.header)
-            hot = getTitle(res);
+            hotData = getTitle(res);
         }
     })
 
@@ -39,14 +38,11 @@ function getTitle(res) {
     return hotTitle;
 }
 
-app.get('/baiduHot', async (req, res, next) => {
-    res.send(hot);
+// 监听
+router.use('/', function (req, res, next) {
+    res.send(hotData)
 });
 
 
-// 开启服务器，监听3000端口
-let server = app.listen(3000, () => {
-    let host = server.address().address;
-    let port = server.address().port;
-    console.log('Your App is running at http://%s:%s', host, port);
-})
+
+module.exports = router;
