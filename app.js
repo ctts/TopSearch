@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var weiboRouter = require('./routes/weibo');
@@ -52,5 +53,16 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
+//连接本地数据库
+mongoose.connect('mongodb://@127.0.0.1:27017/bishe',{ useNewUrlParser: true }); 
+var db = mongoose.connection;
+// 连接成功
+db.on('open', function () {
+  console.log('-------------MongoDB Connection Successed----------------');
+});
+// 连接失败
+db.on('error', function () {
+  console.log('MongoDB Connection Error');
+});
 
 module.exports = app;

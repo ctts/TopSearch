@@ -11,10 +11,22 @@ superagent.get('https://s.weibo.com/top/summary?cate=realtimehot')
       // 如果访问失败
       console.log('抓取失败，', err);
     } else {
-      hotData = getTitle(res);
+      hotData = {
+        listData: getTitle(res),
+        titleName: getNameAndImg()
+      }
     }
   })
 
+//获取图片路径和name
+function getNameAndImg() {
+  return {
+    name: '微博热搜榜'
+    // img:''
+  };
+}
+
+// 获取热搜
 function getTitle(res) {
   let hotTitle = [];
   let $ = cheerio.load(res.text);
@@ -26,11 +38,13 @@ function getTitle(res) {
       return;
     }
     href = 'https://s.weibo.com/' + href;
+    i = i < 10 ? '0' + i : i;
     let hot = {
-      id: i++,
+      id: i,
       title: content.text(),
       url: href
     }
+    i++;
     hotTitle.push(hot);
   })
   return hotTitle;
