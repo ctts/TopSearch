@@ -34,7 +34,6 @@ function getTitle(res) {
         }
         hotTitle.push(hot);
     })
-    console.log(hotTitle.length)
     return hotTitle;
 }
 
