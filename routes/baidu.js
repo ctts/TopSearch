@@ -24,10 +24,6 @@ function getTitle(res) {
     $('td').find('a.list-title').each((index, element) => {
         let content = $(element);
         let href = content.attr('href');
-        // if (href == 'javascript:void(0);') {
-        //     return
-        // }
-        // href = 'https://s.weibo.com/' + href;
         let hot = {
             title: content.text(),
             url: href
