@@ -2,10 +2,14 @@ var express = require('express');
 var router = express.Router();
 const superagent = require('superagent');
 const cheerio = require('cheerio');
+const weiboURL = require('../websURL/url').weiboURL
+const URL = require('url')
 
 let hotData;
 
-superagent.get('https://s.weibo.com/top/summary?cate=realtimehot')
+
+
+superagent.get(weiboURL)
   .end((err, res) => {
     if (err) {
       // 如果访问失败
@@ -13,18 +17,10 @@ superagent.get('https://s.weibo.com/top/summary?cate=realtimehot')
     } else {
       hotData = {
         listData: getTitle(res),
-        titleName: getNameAndImg()
       }
     }
   })
 
-//获取图片路径和name
-function getNameAndImg() {
-  return {
-    name: '微博热搜榜'
-    // img:''
-  };
-}
 
 // 获取热搜
 function getTitle(res) {

@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 const superagent = require('superagent');
 const cheerio = require('cheerio');
+const githubURL = require('../websURL/url').githubURL
 
 let hotData;
 
-superagent.get('http://www.qdaily.com/tags/29.html')
+superagent.get(githubURL)
     .end((err, res) => {
         if (err) {
             // 如果访问失败
@@ -30,9 +31,10 @@ function getTitle(res) {
     let hotTitle = [];
     let $ = cheerio.load(res.text);
     let i = 1;
-    $('.packery-item').each((index, element) => {
-        let url = 'http://www.qdaily.com' + $(element).find('a').attr('href');
-        let title = $(element).find('a').find('img').attr('alt');
+    $('.codesearch-results').find('ul').find('li').each((index, element) => {
+        let content = $(element).find('h3').find('a');
+        let url = 'https://github.com' + content.attr('href');
+        let title = content.attr('href').substring(1);
         i = i < 10 ? '0' + i : i;
         let hot = {
             id: i,

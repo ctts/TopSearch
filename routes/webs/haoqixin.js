@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 const superagent = require('superagent');
 const cheerio = require('cheerio');
-
+const haoqixinURL = require('../websURL/url').haoqixinURL
 let hotData;
 
-superagent.get('https://github.com/search?o=desc&p=1&q=stars%3A%3E50000&s=stars&type=Repositories')
+superagent.get(haoqixinURL)
     .end((err, res) => {
         if (err) {
             // 如果访问失败
@@ -30,10 +30,9 @@ function getTitle(res) {
     let hotTitle = [];
     let $ = cheerio.load(res.text);
     let i = 1;
-    $('.codesearch-results').find('ul').find('li').each((index, element) => {
-        let content = $(element).find('h3').find('a');
-        let url = 'https://github.com' + content.attr('href');
-        let title = content.attr('href').substring(1);
+    $('.packery-item').each((index, element) => {
+        let url = 'http://www.qdaily.com' + $(element).find('a').attr('href');
+        let title = $(element).find('a').find('img').attr('alt');
         i = i < 10 ? '0' + i : i;
         let hot = {
             id: i,

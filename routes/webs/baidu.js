@@ -3,10 +3,11 @@ var router = express.Router();
 const superagent = require('superagent');
 const cheerio = require('cheerio');
 require('superagent-charset')(superagent)
+const baiduURL = require('../websURL/url').baiduURL
 
 let hotData = [];
 
-superagent.get('http://top.baidu.com/buzz?b=1&fr=topindex')
+superagent.get(baiduURL)
     .charset()
     .end((err, res) => {
         if (err) {
