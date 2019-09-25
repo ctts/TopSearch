@@ -10,8 +10,9 @@ var weiboRouter = require('./routes/webs/weibo');
 var baiduRouter = require('./routes/webs/baidu');
 var githubRouter = require('./routes/webs/github');
 var haoqixinRouter = require('./routes/webs/haoqixin');
-var doubanRouter = require('./routes/webs/douban');
-var findDataRouter = require('./routes/findData')
+var zhihuRouter = require('./routes/webs/zhihu');
+// var doubanRouter = require('./routes/webs/douban');
+// var findDataRouter = require('./routes/findData')
 
 var loginRouter = require('./routes/login');
 
@@ -57,8 +58,9 @@ app.use('/baidu', baiduRouter);
 app.use('/github', githubRouter);
 app.use('/haoqixin', haoqixinRouter);
 app.use('/login', loginRouter);
-app.use('/douban', doubanRouter);
-app.use('/findData', findDataRouter);
+app.use('/zhihu', zhihuRouter);
+// app.use('/douban', doubanRouter);
+// app.use('/findData', findDataRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
