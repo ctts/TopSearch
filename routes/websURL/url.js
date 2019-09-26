@@ -8,11 +8,17 @@ const githubURL = 'https://github.com/search?o=desc&p=1&q=stars%3A%3E50000&s=sta
 const haoqixinURL = 'http://www.qdaily.com/tags/29.html';
 // 豆瓣
 const doubanURL = 'https://movie.douban.com/top250';
+// bilibili
+const bilibiliURL = 'https://www.bilibili.com/ranking';
+// 知乎
+const zhihuURL = 'https://daily.zhihu.com/'
 
 module.exports = {
     weiboURL,
     baiduURL,
     githubURL,
     haoqixinURL,
-    doubanURL
+    doubanURL,
+    bilibiliURL,
+    zhihuURL,
 }
