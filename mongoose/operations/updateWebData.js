@@ -3,8 +3,6 @@ const cheerio = require('cheerio');
 let listItem = require('../../mongoose/models/ListItem')
 let web = require('../../mongoose/models/Web')
 
-const puppeteer = require('puppeteer');
-
 // 向网站发起请求
 function getWebData(url) {
     let promise = new Promise((resolve, reject) => {

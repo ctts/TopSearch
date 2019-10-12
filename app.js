@@ -17,6 +17,9 @@ var bilibiliRouter = require('./routes/webs/bilibili')
 
 var loginRouter = require('./routes/login');
 
+// 设置定时任务
+require('./handle/cycle-operation');
+
 // 连接mongodb
 require('./mongoose/config/connect');
 
@@ -35,7 +38,6 @@ app.all('*', function (req, res, next) {
 
   if (req.method == 'OPTIONS') {
     res.send(200);
-    /让options请求快速返回/
   } else {
     next();
   }
