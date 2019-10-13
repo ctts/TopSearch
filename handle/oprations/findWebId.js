@@ -10,8 +10,15 @@ function findWebId(webname) {
                 console.log(err)
                 reject(err)
             } else {
-                console.log(result)
-                resolve(result._id)
+                // console.log(result)
+                if (result) {
+                    // 若网站存在
+                    resolve(result._id)
+                } else {
+                    // 若不存在，则返回错误
+                    reject('网站不存在')
+
+                }
             }
         })
     })

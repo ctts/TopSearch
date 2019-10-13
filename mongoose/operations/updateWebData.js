@@ -4,7 +4,7 @@ let listItem = require('../../mongoose/models/ListItem')
 let web = require('../../mongoose/models/Web')
 
 // 向网站发起请求
-function getWebData(url) {
+function getWebHTML(url) {
     let promise = new Promise((resolve, reject) => {
         superagent.get(url)
             .end((err, res) => {
@@ -81,7 +81,7 @@ function insertDB(dataList) {
 // 主入口
 let setData = async (webname, url) => {
     let webId = await findWebId(webname)
-    let hotData = await getWebData(url)
+    let hotData = await getWebHTML(url)
     let result = await getData(hotData, webId)
     return await insertDB(result)
 

@@ -1,3 +1,7 @@
+const getweibo = require('../find-data/weibo')
+const getbaidu = require('../find-data/baidu')
+
+
 // 微博
 const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot';
 //百度
@@ -11,11 +15,17 @@ const doubanURL = 'https://movie.douban.com/top250';
 // bilibili
 const bilibiliURL = 'https://www.bilibili.com/ranking';
 // 知乎
-const zhihuURL = 'https://daily.zhihu.com/'
+const zhihuURL = 'https://daily.zhihu.com/';
 
 module.exports = {
-    weiboURL,
-    baiduURL,
+    weibo: {
+        func: getweibo,
+        url: weiboURL,
+    },
+    baidu: {
+        func: getbaidu,
+        url: baiduURL,
+    },
     githubURL,
     haoqixinURL,
     doubanURL,
