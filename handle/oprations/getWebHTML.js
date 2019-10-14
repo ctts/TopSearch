@@ -3,10 +3,11 @@ require('superagent-charset')(superagent)
 
 
 // 向网站发起请求
-function getWebHTML(url) {
+function getWebHTML(url, options = {}) {
     let promise = new Promise((resolve, reject) => {
         superagent
             .get(url)
+            .set(options)
             .charset()
             .end((err, res) => {
                 if (err) {

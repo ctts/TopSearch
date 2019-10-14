@@ -1,10 +1,10 @@
-let listItem = require('../../mongoose/models/ListItem')
+let listItem = require('../models/ListItem')
 
 // 查找所有同网站数据并删除
 function deleteDB(webId) {
     let promise = new Promise((resolve, reject) => {
         // 直接删除，其实也可以设置一个隐藏字段
-        listItem.remove({
+        listItem.deleteMany({
             webId
         }, (err) => {
             if (err) {
@@ -14,7 +14,6 @@ function deleteDB(webId) {
             }
         })
     })
-
     return promise
 }
 
@@ -26,8 +25,7 @@ function insertDB(dataList) {
                 console.log(err)
                 reject(err)
             } else {
-                console.log(result)
-                resolve()
+                resolve(result)
             }
         })
     })
@@ -37,7 +35,7 @@ function insertDB(dataList) {
 async function insertHotData(dataList) {
     let webId = dataList[0].webId
     await deleteDB(webId)
-    await insertDB(dataList)
+    return await insertDB(dataList)
 }
 
 module.exports = insertHotData

@@ -1,4 +1,4 @@
-let web = require('../../mongoose/models/Web')
+let web = require('../models/Web')
 
 // 找到webid
 function findWebId(webname) {

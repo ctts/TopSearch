@@ -3,6 +3,8 @@ var router = express.Router();
 const superagent = require('superagent');
 const cheerio = require('cheerio');
 const bilibiliURL = require('../websURL/url').bilibiliURL
+const URL = require('url')
+let urlObj = URL.parse(bilibiliURL)
 
 let hotData;
 
@@ -19,6 +21,7 @@ superagent.get(bilibiliURL)
         'Sec-Fetch-User': '?1',
         'Upgrade-Insecure-Requests': '1',
     })
+    // .set(urlObj)
     .end((err, res) => {
         if (err) {
             // 如果访问失败

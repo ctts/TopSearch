@@ -7,7 +7,7 @@ const githubURL = 'https://github.com/search?o=desc&p=1&q=stars%3A%3E50000&s=sta
 // 好奇心日报
 const haoqixinURL = 'http://www.qdaily.com/tags/29.html';
 // 豆瓣
-const doubanURL = 'https://movie.douban.com/top250';
+const doubanURL = 'https://movie.douban.com/top250?start=0&filter=';
 // bilibili
 const bilibiliURL = 'https://www.bilibili.com/ranking';
 // 知乎

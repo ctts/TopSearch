@@ -11,7 +11,7 @@ var indexRouter = require('./routes/index');
 // var githubRouter = require('./routes/webs/github');
 // var haoqixinRouter = require('./routes/webs/haoqixin');
 // var zhihuRouter = require('./routes/webs/zhihu');
-// var bilibiliRouter = require('./routes/webs/bilibili')
+var bilibiliRouter = require('./routes/webs/bilibili')
 // var doubanRouter = require('./routes/webs/douban');
 // var findDataRouter = require('./routes/findData')
 
@@ -62,7 +62,7 @@ app.use('/', indexRouter);
 // app.use('/haoqixin', haoqixinRouter);
 // app.use('/login', loginRouter);
 // app.use('/zhihu', zhihuRouter);
-// app.use('/bilibili', bilibiliRouter);
+app.use('/bilibili', bilibiliRouter);
 
 // app.use('/douban', doubanRouter);
 // app.use('/findData', findDataRouter);

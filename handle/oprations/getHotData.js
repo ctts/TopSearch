@@ -1,15 +1,20 @@
 const webs = require('../websURL/url');
-let findWebId = require('../oprations/findWebId');
-let insertHotData = require('../oprations/insertHotData');
+let findWebId = require('../../mongoose/operations/getWebId');
+let insertHotData = require('../../mongoose/operations/insertHotData');
 let getWebHTML = require('../oprations/getWebHTML');
+let packingData = require('../oprations/packingData')
 
 
 
 // 入口
-let getdata = async function (webname) {
-    let webId = await findWebId(webname)
-    let html = await getWebHTML(webs[webname].url)
-    let result = await webs[webname].func(html, webId)
+let getdata = async function ({
+    name,
+    header = {}
+}) {
+    let webId = await findWebId(name)
+    let html = await getWebHTML(webs[name].url, header)
+    let data = await webs[name].func(html)
+    let result = await packingData(data, webId)
     // console.log(result)
     return await insertHotData(result)
 }
