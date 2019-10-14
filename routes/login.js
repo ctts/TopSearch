@@ -2,15 +2,14 @@ var express = require('express');
 var router = express.Router();
 var users = require('../mongoose/models/User');
 var jwt = require('jsonwebtoken');
-
-const secret = 'biyesheji';
+const SECRET = require('../public/javascripts/global').SECRET
 
 // 生成token
 function createToken(user) {
     let username = user.username
     let token = jwt.sign({
         username
-    }, secret, {
+    }, SECRET, {
         // 过期时间7天
         'expiresIn': 60 * 60 * 24 * 7
     })
@@ -23,7 +22,7 @@ function verifyToken(header) {
     if (!token) {
         return false
     }
-    jwt.verify(token, secret, (error, result) => {
+    jwt.verify(token, SECRET, (error, result) => {
         if (error) {
             return false
         } else {

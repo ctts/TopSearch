@@ -44,7 +44,7 @@ function scheduleCronstyle() {
         schedule.scheduleJob(web.refreshTime, function () {
             // console.log('scheduleCronstyle:' + new Date());
             getdata(web)
-                .then((result) => console.log('插入成功', result))
+                .then((result) => console.log('插入成功'))
                 .catch(err => console.log(err))
         });
     });

@@ -9,6 +9,7 @@ function getWebHTML(url, options = {}) {
             .get(url)
             .set(options)
             .charset()
+            .buffer(true)
             .end((err, res) => {
                 if (err) {
                     // 如果访问失败

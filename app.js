@@ -4,27 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var app = express();
+var verifyToken = require('./public/javascripts/verifyToken')
 
 var indexRouter = require('./routes/index');
-// var weiboRouter = require('./routes/webs/weibo');
-// var baiduRouter = require('./routes/webs/baidu');
-// var githubRouter = require('./routes/webs/github');
-// var haoqixinRouter = require('./routes/webs/haoqixin');
-// var zhihuRouter = require('./routes/webs/zhihu');
-var bilibiliRouter = require('./routes/webs/bilibili')
-// var doubanRouter = require('./routes/webs/douban');
-// var findDataRouter = require('./routes/findData')
-
 var loginRouter = require('./routes/login');
-
-// 设置定时任务
-require('./handle/cycle-operation');
+var websiteRouter = require('./routes/website')
 
 // 连接mongodb
 require('./mongoose/config/connect');
 
-var app = express();
+// 设置定时任务
+require('./handle/cycle-operation');
 
+// 设置bodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -39,7 +32,16 @@ app.all('*', function (req, res, next) {
   if (req.method == 'OPTIONS') {
     res.send(200);
   } else {
-    next();
+    if (!req.url.match(/login/)) {
+      let result = verifyToken(req.headers)
+      result.then((result) => {
+        next();
+      }).catch((err) => {
+        next(createError(401))
+      });
+    } else {
+      next();
+    }
   }
 });
 
@@ -55,17 +57,10 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 路由
 app.use('/', indexRouter);
-// app.use('/weibo', weiboRouter);
-// app.use('/baidu', baiduRouter);
-// app.use('/github', githubRouter);
-// app.use('/haoqixin', haoqixinRouter);
-// app.use('/login', loginRouter);
-// app.use('/zhihu', zhihuRouter);
-app.use('/bilibili', bilibiliRouter);
-
-// app.use('/douban', doubanRouter);
-// app.use('/findData', findDataRouter);
+app.use('/login', loginRouter);
+app.use('/website', websiteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
