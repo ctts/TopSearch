@@ -10,6 +10,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "formidable": "^1.2.1",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.13",
@@ -19,5 +20,8 @@
     "pug": "2.0.0-beta11",
     "superagent": "^5.1.0",
     "superagent-charset": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1"
   }
 }

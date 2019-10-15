@@ -8,19 +8,19 @@ const getzhihu = require('../find-data/zhihu')
 
 
 // 微博
-const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot';
+const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot'
 //百度
-const baiduURL = 'http://top.baidu.com/buzz?b=1&fr=topindex';
+const baiduURL = 'http://top.baidu.com/buzz?b=1&fr=topindex'
 // github
-const githubURL = 'https://github.com/trending';
+const githubURL = 'https://github.com/trending'
 // 好奇心日报
-const haoqixinURL = 'http://www.qdaily.com/tags/29.html';
+const haoqixinURL = 'http://www.qdaily.com/tags/29.html'
 // 豆瓣
-const doubanURL = 'https://movie.douban.com/top250?start=0&filter=';
+const doubanURL = 'https://movie.douban.com/top250?start=0&filter='
 // bilibili
-const bilibiliURL = 'https://www.bilibili.com/ranking/all/0/0/1';
+const bilibiliURL = 'https://www.bilibili.com/ranking/all/0/0/1'
 // 知乎
-const zhihuURL = 'https://daily.zhihu.com/';
+const zhihuURL = 'https://daily.zhihu.com/'
 
 module.exports = {
     weibo: {
