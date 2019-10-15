@@ -16,22 +16,6 @@ function createToken(user) {
     return token
 }
 
-// 验证token
-function verifyToken(header) {
-    let token = header['auth']
-    if (!token) {
-        return false
-    }
-    jwt.verify(token, SECRET, (error, result) => {
-        if (error) {
-            return false
-        } else {
-            console.log(data)
-            return data
-        }
-    })
-}
-
 // 插入用户
 function insertUser(user) {
     let promise = new Promise((resolve, reject) => {
@@ -65,7 +49,7 @@ function findUser(user) {
                 if (res.password === user.password) {
                     resolve(1)
                 } else {
-                    resolve(0)
+                    reject(0)
                 }
             } else {
                 // 否则开始注册用户
@@ -91,17 +75,19 @@ function findUser(user) {
 /* GET users listing. */
 router.post('/', function (req, res) {
     let data = req.body;
-    let header = req.header
     let result = findUser(data);
     let token = '';
     result.then((val) => {
-        if (val !== 0) {
-            token = createToken(data)
-        }
-        // 返回
+        token = createToken(data)
+        // 返回完成
         res.json({
             "result": val,
             "token": token
+        })
+    }).catch(err => {
+        //密码错误
+        res.json({
+            "result": err,
         })
     })
 });

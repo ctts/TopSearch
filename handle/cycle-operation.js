@@ -3,7 +3,7 @@ const schedule = require('node-schedule');
 // 获取数据方法
 const getdata = require('./oprations/getHotData');
 // 获取豆瓣数据方法
-let getdoubandata = require('./find-data/douban');
+// let getdoubandata = require('./find-data/douban');
 
 // bilibili http头部参数
 const bilibiliHeader = {
@@ -44,7 +44,7 @@ function scheduleCronstyle() {
         schedule.scheduleJob(web.refreshTime, function () {
             // console.log('scheduleCronstyle:' + new Date());
             getdata(web)
-                .then((result) => console.log('插入成功'))
+                // .then((result) => console.log('插入成功'))
                 .catch(err => console.log(err))
         });
     });
