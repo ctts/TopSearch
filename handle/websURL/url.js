@@ -5,6 +5,8 @@ const getbilibili = require('../find-data/bilibili')
 const gethaoqixin = require('../find-data/haoqixin')
 const getgithub = require('../find-data/github')
 const getzhihu = require('../find-data/zhihu')
+const getweixin = require('../find-data/weixin')
+const getwuaipojie = require('../find-data/wuaipojie')
 
 
 // 微博
@@ -21,6 +23,10 @@ const doubanURL = 'https://movie.douban.com/top250?start=0&filter='
 const bilibiliURL = 'https://www.bilibili.com/ranking/all/0/0/1'
 // 知乎
 const zhihuURL = 'https://daily.zhihu.com/'
+// 微信
+const weixinURL = 'http://www.gsdata.cn/rank/wxarc'
+// 吾爱破解
+const wuaipojieURL = 'https://www.52pojie.cn/forum.php?mod=guide&view=hot'
 
 module.exports = {
     weibo: {
@@ -46,6 +52,14 @@ module.exports = {
     zhihu: {
         func: getzhihu,
         url: zhihuURL,
+    },
+    weixin: {
+        func: getweixin,
+        url: weixinURL,
+    },
+    wuaipojie: {
+        func: getwuaipojie,
+        url: wuaipojieURL,
     },
     doubanURL,
 }
