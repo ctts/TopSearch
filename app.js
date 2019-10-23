@@ -3,11 +3,12 @@ var express = require('express')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 var bodyParser = require('body-parser')
+const path = require('path')
 var app = express()
 var verifyToken = require('./public/javascripts/verifyToken')
 
 // 路由路径
-var indexRouter = require('./routes/index')
+// var indexRouter = require('./routes/index')
 var loginRouter = require('./routes/login')
 var websiteRouter = require('./routes/website')
 var acceptImages = require('./routes/getUserImage')
@@ -24,13 +25,28 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 
+// view engine setup
+// app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+
+app.use(logger('dev'))
+app.use(express.json())
+app.use(express.urlencoded({
+  extended: false
+}))
+app.use(cookieParser())
+
+// 获取主页
+app.use(express.static(path.resolve(__dirname, './public/dist')))
+
 // 设置跨域
 app.all('*', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
+  // res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
+  res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild')
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS')
 
-  if (req.method == 'OPTIONS') {
+  if (req.method === 'OPTIONS') {
     res.send(200)
   } else {
     if (!req.url.match(/login/)) {
@@ -46,20 +62,8 @@ app.all('*', function (req, res, next) {
   }
 })
 
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
-
-app.use(logger('dev'))
-app.use(express.json())
-app.use(express.urlencoded({
-  extended: false
-}))
-app.use(cookieParser())
-// app.use(express.static(path.join(__dirname, 'public')))
-
 // 路由
-app.use('/', indexRouter)
+// app.use('/', indexRouter)
 app.use('/login', loginRouter)
 app.use('/website', websiteRouter)
 app.use('/images', acceptImages)

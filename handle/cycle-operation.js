@@ -59,12 +59,12 @@ function scheduleCronstyle() {
 // scheduleCronstyle();
 
 // 测试
-getdata({
-        'name': 'bilibili',
-        'header': bilibiliHeader
-    })
-    .then((result) => console.log(result))
-    .catch(err => console.log(err))
+// getdata({
+//         'name': 'bilibili',
+//         'header': bilibiliHeader
+//     })
+//     .then((result) => console.log(result))
+//     .catch(err => console.log(err))
 
 
 // 生成网站对象,默认日更,每天1时2分3秒
