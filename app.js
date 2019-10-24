@@ -11,7 +11,7 @@ var verifyToken = require('./public/javascripts/verifyToken')
 // var indexRouter = require('./routes/index')
 var loginRouter = require('./routes/login')
 var websiteRouter = require('./routes/website')
-var acceptImages = require('./routes/getUserImage')
+var acceptImages = require('./routes/setUserImage')
 
 // 连接mongodb
 require('./mongoose/config/connect')
@@ -39,9 +39,12 @@ app.use(cookieParser())
 // 获取主页
 app.use(express.static(path.resolve(__dirname, './public/dist')))
 
+// 将图片开放
+app.use('/static/userHead', express.static('public/userHead'))
+
 // 设置跨域
 app.all('*', function (req, res, next) {
-  // res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
+  // res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild')
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS')
@@ -49,7 +52,7 @@ app.all('*', function (req, res, next) {
   if (req.method === 'OPTIONS') {
     res.send(200)
   } else {
-    if (!req.url.match(/login/)) {
+    if (!(req.url.match(/login/))) {
       let result = verifyToken(req.headers)
       result.then(() => {
         next()
@@ -66,7 +69,7 @@ app.all('*', function (req, res, next) {
 // app.use('/', indexRouter)
 app.use('/login', loginRouter)
 app.use('/website', websiteRouter)
-app.use('/images', acceptImages)
+app.use('/upload', acceptImages)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

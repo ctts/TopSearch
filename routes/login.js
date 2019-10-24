@@ -49,6 +49,7 @@ function findUser(user) {
                 if (res.password === user.password) {
                     resolve(1)
                 } else {
+                    // 登录失败
                     reject(0)
                 }
             } else {
@@ -60,11 +61,9 @@ function findUser(user) {
 
     // 判断若没有该用户则插入,若注册成功或登录成功，验证token
     promise.then((value) => {
-        if (value === 0 || value === 1) {
-            return promise
-        } else {
+        if (value === 2) {
             return insertUser(user).then(() => {
-                return 2
+                return Promise.resolve(2)
             })
         }
     })
@@ -85,6 +84,7 @@ router.post('/', function (req, res) {
             "token": token
         })
     }).catch(err => {
+        console.log(err)
         //密码错误
         res.json({
             "result": err,
