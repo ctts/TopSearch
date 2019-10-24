@@ -9,7 +9,10 @@ let historySchema = new Schema({
         default: Date.now
     },
     webId: String,
-    infoURL: String
+    info: [{
+        infoURL: String,
+        infoData: String
+    }]
 })
 
 let History = mongoose.model('history', historySchema);
