@@ -12,6 +12,7 @@ var verifyToken = require('./public/javascripts/verifyToken')
 var loginRouter = require('./routes/login')
 var websiteRouter = require('./routes/website')
 var acceptImages = require('./routes/setUserImage')
+var historyRouter = require('./routes/history')
 
 // 连接mongodb
 require('./mongoose/config/connect')
@@ -70,6 +71,7 @@ app.all('*', function (req, res, next) {
 app.use('/login', loginRouter)
 app.use('/website', websiteRouter)
 app.use('/upload', acceptImages)
+app.use('/history', historyRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

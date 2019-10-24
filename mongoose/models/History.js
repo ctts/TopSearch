@@ -8,10 +8,10 @@ let historySchema = new Schema({
         type: Date,
         default: Date.now
     },
-    webId: String,
     info: [{
+        webId: String,
         infoURL: String,
-        infoData: String
+        infoContent: String
     }]
 })
 
