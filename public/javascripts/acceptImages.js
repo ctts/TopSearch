@@ -24,9 +24,10 @@ module.exports = function (req) {
 
                 // 文件重命名
                 let oldname = obj.userimg.path
-                let newname = path.join(__dirname, '../userHead', obj.username + new Date().getTime() + '.png');
+                let newname = obj.username + new Date().getTime() + '.png';
+                let newfullname = path.join(__dirname, '../userHead', newname);
 
-                fs.rename(oldname, newname, err => {
+                fs.rename(oldname, newfullname, err => {
                     err ? reject(err) : resolve({
                         userimg: newname,
                         username: obj.username
