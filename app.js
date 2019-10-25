@@ -42,6 +42,7 @@ app.use(express.static(path.resolve(__dirname, './public/dist')))
 
 // 将图片开放
 app.use('/static/userHead', express.static('public/userHead'))
+app.use('/static/webslogo', express.static('public/images'))
 
 // 设置跨域
 app.all('*', function (req, res, next) {
