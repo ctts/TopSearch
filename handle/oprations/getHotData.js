@@ -1,5 +1,5 @@
 const webs = require('../websURL/url');
-let findWebId = require('../../mongoose/operations/getWebId');
+let findWebId = require('../../mongoose/operations/getWebIdByName');
 let insertHotData = require('../../mongoose/operations/insertHotData');
 let getWebHTML = require('../oprations/getWebHTML');
 let packingData = require('../oprations/packingData')

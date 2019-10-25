@@ -4,14 +4,14 @@ let Schema = mongoose.Schema
 
 let historySchema = new Schema({
     username: String,
-    time: {
-        type: Date,
-        default: Date.now
-    },
     info: [{
         webId: String,
         infoURL: String,
-        infoContent: String
+        infoContent: String,
+        time: {
+            type: Date,
+            default: Date.now
+        },
     }]
 })
 

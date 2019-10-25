@@ -1,5 +1,5 @@
 const listItem = require('../models/ListItem')
-const getWebId = require('../operations/getWebId')
+const getWebId = require('../operations/getWebIdByName')
 
 // 根据网站名获取
 async function getDatabaseHotData(webname) {
