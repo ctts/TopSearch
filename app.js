@@ -13,6 +13,7 @@ var loginRouter = require('./routes/login')
 var websiteRouter = require('./routes/website')
 var acceptImages = require('./routes/setUserImage')
 var historyRouter = require('./routes/history')
+var subscriptionRouter = require('./routes/subscription')
 
 // 连接mongodb
 require('./mongoose/config/connect')
@@ -73,6 +74,7 @@ app.use('/login', loginRouter)
 app.use('/website', websiteRouter)
 app.use('/upload', acceptImages)
 app.use('/history', historyRouter)
+app.use('/subscription', subscriptionRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
