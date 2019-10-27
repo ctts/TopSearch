@@ -14,6 +14,7 @@ var websiteRouter = require('./routes/website')
 var acceptImages = require('./routes/setUserImage')
 var historyRouter = require('./routes/history')
 var subscriptionRouter = require('./routes/subscription')
+var allWebRouter = require('./routes/allwebsite')
 
 // 连接mongodb
 require('./mongoose/config/connect')
@@ -55,7 +56,7 @@ app.all('*', function (req, res, next) {
   if (req.method === 'OPTIONS') {
     res.send(200)
   } else {
-    if (!(req.url.match(/login/))) {
+    if (!(req.url.match(/login/) || req.url.match(/allweb/) || req.url.match(/website/))) {
       let result = verifyToken(req.headers)
       result.then(() => {
         next()
@@ -75,6 +76,7 @@ app.use('/website', websiteRouter)
 app.use('/upload', acceptImages)
 app.use('/history', historyRouter)
 app.use('/subscription', subscriptionRouter)
+app.use('/allweb', allWebRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -18,10 +18,10 @@ function createSubscription(username, webname) {
     return promise
 }
 
-// 更新,默认为添加，若type==true为添加，否则为删除
+// 更新,默认为添加，若type==false为添加，否则为删除
 function updateSubscription(username, webname, type) {
     let promise = new Promise((resolve, reject) => {
-        if (type) {
+        if (!type) {
             subscription.updateOne({
                 username
             }, {
@@ -56,11 +56,14 @@ function updateSubscription(username, webname, type) {
 }
 
 // 入口
-async function addSubscription(username, webname, type = true) {
+async function addSubscription(username, webname, type) {
+    if (!webname) {
+        return Promise.reject("网站名为空")
+    }
     let result = ''
     let exist = await existSubscription(username)
     if (exist) {
-        if (exist.webs.includes(webname) && type === true) {
+        if (exist.webs.includes(webname) && type === false) {
             // 返回已存在
             return Promise.reject("网站已被订阅")
         } else {
