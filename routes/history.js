@@ -4,18 +4,23 @@ const insertHistory = require('../mongoose/operations/insertHistory')
 const getHistory = require('../mongoose/operations/getHistory')
 const getWeb = require('../mongoose/operations/getWebById')
 
-/* GET home page. */
+// 插入记录
 router.use('/insertHistory', function (req, res) {
     let data = req.body
     let username = data.username
-    let info = {
-        webId: data.webId,
-        infoURL: data.infoURL,
-        infoContent: data.infoContent
+    if (username) {
+        let info = {
+            webId: data.webId,
+            infoURL: data.infoURL,
+            infoContent: data.infoContent
+        }
+        insertHistory(username, info).then(() => {
+            res.send('success')
+        })
+    } else {
+        res.send('failed')
     }
-    insertHistory(username, info).then(() => {
-        res.send('success')
-    })
+
 });
 
 router.get('/getHistory/:username', function (req, res) {

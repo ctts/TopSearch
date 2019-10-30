@@ -14,7 +14,7 @@ function getTitle(html) {
     let $ = cheerio.load(html.text);
     $('.item').find('.info').find('.hd').each((index, element) => {
         let content = $(element).find('a')
-        let infoURL = 'https:' + content.attr('href')
+        let infoURL = content.attr('href')
         let infoContent = content.find('.title').first().text()
         let hot = {
             infoContent,

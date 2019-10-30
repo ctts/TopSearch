@@ -56,7 +56,8 @@ app.all('*', function (req, res, next) {
   if (req.method === 'OPTIONS') {
     res.send(200)
   } else {
-    if (!(req.url.match(/login/) || req.url.match(/allweb/) || req.url.match(/website/))) {
+    //登录、主页、图片、插入历史不需要验证
+    if (!req.url.match(/login|allweb|website|history\/insertHistory/)) {
       let result = verifyToken(req.headers)
       result.then(() => {
         next()
