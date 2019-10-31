@@ -4,3 +4,6 @@
 环境 vue + node + MongoDB
 
 目前已抓取 百度 bilibili 豆瓣top250 github每日 好奇心日报 微博 微信 吾爱破解等热榜
+
+npm环境搭建完毕后访问 http://localhost:3000 可访问
+
