@@ -54,7 +54,6 @@ function findUser(user) {
                             userimg
                         })
                     })
-                    // resolve(1)
                 } else {
                     // 登录失败
                     reject({
@@ -70,7 +69,6 @@ function findUser(user) {
                         userimg: ''
                     })
                 })
-                // resolve(2)
             }
         })
     })

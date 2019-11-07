@@ -16,7 +16,6 @@ function getWeb(_id) {
                 } else {
                     // 若不存在，则返回错误
                     reject('网站不存在')
-
                 }
             }
         })

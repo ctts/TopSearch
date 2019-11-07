@@ -15,6 +15,8 @@ var acceptImages = require('./routes/setUserImage')
 var historyRouter = require('./routes/history')
 var subscriptionRouter = require('./routes/subscription')
 var allWebRouter = require('./routes/allwebsite')
+var alldataRouter = require('./routes/allhotdata')
+var getUserPreferRouter = require('./routes/preference')
 
 // 连接mongodb
 require('./mongoose/config/connect')
@@ -78,6 +80,8 @@ app.use('/upload', acceptImages)
 app.use('/history', historyRouter)
 app.use('/subscription', subscriptionRouter)
 app.use('/allweb', allWebRouter)
+app.use('/alldata', alldataRouter)
+app.use('/getUserPrefer', getUserPreferRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
