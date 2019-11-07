@@ -34,6 +34,11 @@ let needToLoopWebs = [{
     name: 'zhihu',
 }, {
     name: 'weixin',
+}, {
+    name: 'baidutieba',
+}, {
+    name: 'wuaipojie',
+    header: wuaipojieHeader,
 }]
 
 function scheduleCronstyle() {
@@ -46,7 +51,7 @@ function scheduleCronstyle() {
         schedule.scheduleJob(web.refreshTime, function () {
             // console.log('scheduleCronstyle:' + new Date());
             getdata(web)
-                // .then((result) => console.log('插入成功'))
+                .then((result) => console.log(result))
                 .catch(err => console.log(err))
         });
     });
@@ -56,16 +61,14 @@ function scheduleCronstyle() {
         .then((result) => console.log('插入成功', result))
         .catch(err => console.log(err))
 }
-// scheduleCronstyle();
+scheduleCronstyle();
 
 // 测试
 // getdata({
-//         'name': 'bilibili',
-//         'header': bilibiliHeader
+//         'name': 'baidutieba',
 //     })
 //     .then((result) => console.log(result))
 //     .catch(err => console.log(err))
-
 
 // 生成网站对象,默认日更,每天1时2分3秒
 function createWeb({

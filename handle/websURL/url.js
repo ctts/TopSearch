@@ -7,6 +7,7 @@ const getgithub = require('../find-data/github')
 const getzhihu = require('../find-data/zhihu')
 const getweixin = require('../find-data/weixin')
 const getwuaipojie = require('../find-data/wuaipojie')
+const getbaidutieba = require('../find-data/baidutieba')
 
 
 // 微博
@@ -27,6 +28,8 @@ const zhihuURL = 'https://daily.zhihu.com/'
 const weixinURL = 'http://www.gsdata.cn/rank/wxarc'
 // 吾爱破解
 const wuaipojieURL = 'https://www.52pojie.cn/forum.php?mod=guide&view=hot'
+// 贴吧
+const baidutiebaURL = 'http://tieba.baidu.com/hottopic/browse/topicList?res_type=1&red_tag=w0084651866'
 
 module.exports = {
     weibo: {
@@ -60,6 +63,10 @@ module.exports = {
     wuaipojie: {
         func: getwuaipojie,
         url: wuaipojieURL,
+    },
+    baidutieba: {
+        func: getbaidutieba,
+        url: baidutiebaURL,
     },
     doubanURL,
 }

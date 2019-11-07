@@ -7,7 +7,11 @@ const getWebById = require('../mongoose/operations/getWebById')
 /* GET home page. */
 router.get('/:username', function (req, res) {
     let username = req.params.username
-    start(username).then(result => res.send(result))
+    if (username) {
+        start(username).then(result => res.send(result))
+    } else {
+        res.send([])
+    }
 });
 
 async function start(username) {
