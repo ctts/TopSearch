@@ -43,6 +43,9 @@ let needToLoopWebs = [{
 }, {
     name: 'wuaipojie',
     header: wuaipojieHeader,
+}, {
+    name: 'doubannews',
+    header: wuaipojieHeader,
 }]
 
 // 生成网站对象,默认日更,每天1时2分3秒
@@ -92,4 +95,9 @@ async function scheduleCronstyle() {
 createallweb().then(() => {
     // 开始定时任务
     scheduleCronstyle();
+
+    // 测试
+    // getdata({name:'doubannews'})
+    //     .then((result) => console.log(result))
+    //     .catch(err => console.log(err))
 }).catch(err => console.log(err))

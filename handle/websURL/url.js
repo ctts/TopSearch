@@ -8,6 +8,7 @@ const getzhihu = require('../find-data/zhihu')
 const getweixin = require('../find-data/weixin')
 const getwuaipojie = require('../find-data/wuaipojie')
 const getbaidutieba = require('../find-data/baidutieba')
+const getdoubannews = require('../find-data/doubannews')
 
 
 // 微博
@@ -18,8 +19,10 @@ const baiduURL = 'http://top.baidu.com/buzz?b=1&fr=topindex'
 const githubURL = 'https://github.com/trending'
 // 好奇心日报
 const haoqixinURL = 'http://www.qdaily.com/tags/29.html'
-// 豆瓣
+// 豆瓣top250
 const doubanURL = 'https://movie.douban.com/top250?start=0&filter='
+// 豆瓣新片榜
+const doubannewsURL = 'https://movie.douban.com/chart'
 // bilibili
 const bilibiliURL = 'https://www.bilibili.com/ranking/all/0/0/1'
 // 知乎
@@ -131,5 +134,14 @@ module.exports = {
             "tag": "hot"
         },
     },
-
+    doubannews: {
+        func: getdoubannews,
+        url: doubannewsURL,
+        info: {
+            "webname": "doubannews",
+            "weblocalname": "豆瓣新片榜",
+            "weblogo": "douban.png",
+            "tag": "hot"
+        },
+    }
 }

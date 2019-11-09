@@ -15,8 +15,11 @@ let getdata = async function ({
     let html = await getWebHTML(webs[name].url, header)
     let data = await webs[name].func(html)
     let result = await packingData(data, webId)
-    // console.log(result)
-    return await insertHotData(result)
+    if (result) {
+        return await insertHotData(result)
+    } else {
+        console.log('未取得数据')
+    }
 }
 
 module.exports = getdata
