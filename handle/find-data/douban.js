@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const doubanURL = require('../websURL/url').doubanURL
+const doubanURL = require('../websURL/url').douban.url
 const URL = require('url')
 const urlObj = URL.parse(doubanURL)
 let findWebId = require('../../mongoose/operations/getWebIdByName')

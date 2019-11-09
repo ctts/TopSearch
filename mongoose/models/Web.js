@@ -4,6 +4,7 @@ let Schema = mongoose.Schema
 
 let webSchema = new Schema({
     webname: String,
+    weblocalname: String,
     weblogo: String,
     tag: String,
 })

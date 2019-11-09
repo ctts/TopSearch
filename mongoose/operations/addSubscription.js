@@ -72,7 +72,10 @@ async function addSubscription(username, webname, type) {
     } else {
         // 将webname转化为数组
         webname = [webname]
-        result = await createSubscription(username, webname)
+        await createSubscription(username, webname)
+        result = {
+            ok: 1
+        }
     }
     return result
 }

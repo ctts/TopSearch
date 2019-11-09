@@ -16,8 +16,8 @@ function findWebId(webname) {
                     resolve(result._id)
                 } else {
                     // 若不存在，则返回错误
-                    reject('网站不存在')
-
+                    // reject('网站不存在')
+                    resolve(0)
                 }
             }
         })

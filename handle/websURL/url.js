@@ -32,41 +32,104 @@ const wuaipojieURL = 'https://www.52pojie.cn/forum.php?mod=guide&view=hot'
 const baidutiebaURL = 'http://tieba.baidu.com/hottopic/browse/topicList?res_type=1&red_tag=w0084651866'
 
 module.exports = {
+    douban: {
+        url: doubanURL,
+        info: {
+            "webname": "douban",
+            "weblocalname": "豆瓣top250",
+            "weblogo": "douban.png",
+            "tag": "other"
+        },
+    },
     weibo: {
         func: getweibo,
         url: weiboURL,
+        info: {
+            "webname": "weibo",
+            "weblocalname": "微博",
+            "weblogo": "weibo.png",
+            "tag": "hot"
+        },
     },
     baidu: {
         func: getbaidu,
         url: baiduURL,
+        info: {
+            "webname": "baidu",
+            "weblocalname": "百度",
+            "weblogo": "baidu.png",
+            "tag": "hot"
+        },
     },
     github: {
         func: getgithub,
         url: githubURL,
+        info: {
+            "webname": "github",
+            "weblocalname": "github",
+            "weblogo": "github.png",
+            "tag": "hot"
+        },
     },
     haoqixin: {
         func: gethaoqixin,
         url: haoqixinURL,
+        info: {
+            "webname": "haoqixin",
+            "weblocalname": "好奇心日报",
+            "weblogo": "haoqixin.png",
+            "tag": "hot"
+        },
     },
     bilibili: {
         func: getbilibili,
-        url: bilibiliURL
+        url: bilibiliURL,
+        info: {
+            "webname": "bilibili",
+            "weblocalname": "bilibili",
+            "weblogo": "bilibili.png",
+            "tag": "hot"
+        },
     },
     zhihu: {
         func: getzhihu,
         url: zhihuURL,
+        info: {
+            "webname": "zhihu",
+            "weblocalname": "知乎日报",
+            "weblogo": "zhihu.png",
+            "tag": "hot"
+        },
     },
     weixin: {
         func: getweixin,
         url: weixinURL,
+        info: {
+            "webname": "weixin",
+            "weblocalname": "微信",
+            "weblogo": "weixin.png",
+            "tag": "hot"
+        },
     },
     wuaipojie: {
         func: getwuaipojie,
         url: wuaipojieURL,
+        info: {
+            "webname": "wuaipojie",
+            "weblocalname": "吾爱破解",
+            "weblogo": "wuaipojie.png",
+            "tag": "other"
+        },
     },
     baidutieba: {
         func: getbaidutieba,
         url: baidutiebaURL,
+        info: {
+            "webname": "baidutieba",
+            "weblocalname": "百度贴吧",
+            "weblogo": "baidu.png",
+            "tag": "hot"
+        },
     },
-    doubanURL,
+
 }

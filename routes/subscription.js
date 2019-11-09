@@ -14,8 +14,6 @@ router.post('/update', function (req, res) {
                 ok: 0
             })
         })
-
-
 });
 
 module.exports = router

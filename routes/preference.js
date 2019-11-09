@@ -15,18 +15,24 @@ router.get('/:username', function (req, res) {
 });
 
 async function start(username) {
-    let result = []
-    // 获取用户订阅的网站
-    let subWebs = await getSubscriptionByName(username)
-    // 找到这些网站的前五条热点
-    subWebs = subWebs.webs
-    for (let web of subWebs) {
-        let data = await getDatabaseHotData(web)
-        data = data.slice(0, 5)
-        data.push(await getWebById(data[0].webId))
-        result.push(data)
+    try {
+        let result = []
+        // 获取用户订阅的网站
+        let subWebs = await getSubscriptionByName(username)
+        // 找到这些网站的前五条热点
+        if (subWebs) {
+            subWebs = subWebs.webs
+            for (let web of subWebs) {
+                let data = await getDatabaseHotData(web)
+                data = data.slice(0, 5)
+                data.push(await getWebById(data[0].webId))
+                result.push(data)
+            }
+        }
+        return result
+    } catch (error) {
+        console.log(error)
     }
-    return result
 }
 
 
