@@ -9,7 +9,7 @@ const getweixin = require('../find-data/weixin')
 const getwuaipojie = require('../find-data/wuaipojie')
 const getbaidutieba = require('../find-data/baidutieba')
 const getdoubannews = require('../find-data/doubannews')
-
+const gethupunba = require('../find-data/hupunba')
 
 // 微博
 const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot'
@@ -33,6 +33,8 @@ const weixinURL = 'http://www.gsdata.cn/rank/wxarc'
 const wuaipojieURL = 'https://www.52pojie.cn/forum.php?mod=guide&view=hot'
 // 贴吧
 const baidutiebaURL = 'http://tieba.baidu.com/hottopic/browse/topicList?res_type=1&red_tag=w0084651866'
+// 虎扑nba
+const hupunbaURL = 'https://bbs.hupu.com/all-nba'
 
 module.exports = {
     douban: {
@@ -143,5 +145,15 @@ module.exports = {
             "weblogo": "douban.png",
             "tag": "hot"
         },
+    },
+    hupunba: {
+        func: gethupunba,
+        url: hupunbaURL,
+        info: {
+            "webname": "hupunba",
+            "weblocalname": "虎扑NBA",
+            "weblogo": "hupu.png",
+            "tag": "hot"
+        }
     }
 }

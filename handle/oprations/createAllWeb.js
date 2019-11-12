@@ -9,7 +9,7 @@ async function createallweb() {
             await createWebs(allweb[web].info)
         }
     }
-    return 
+    return 'success'
 }
 
 module.exports = createallweb
