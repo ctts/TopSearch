@@ -15,7 +15,7 @@ let getdata = async function ({
     let html = await getWebHTML(webs[name].url, header)
     let data = await webs[name].func(html)
     let result = await packingData(data, webId)
-    if (result) {
+    if (result.length > 0) {
         return await insertHotData(result)
     } else {
         console.log('未取得数据')

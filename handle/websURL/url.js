@@ -10,6 +10,8 @@ const getwuaipojie = require('../find-data/wuaipojie')
 const getbaidutieba = require('../find-data/baidutieba')
 const getdoubannews = require('../find-data/doubannews')
 const gethupunba = require('../find-data/hupunba')
+const getqidian = require('../find-data/qidian')
+const getshenmezhidemai = require('../find-data/shenmezhidemai')
 
 // 微博
 const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot'
@@ -35,6 +37,10 @@ const wuaipojieURL = 'https://www.52pojie.cn/forum.php?mod=guide&view=hot'
 const baidutiebaURL = 'http://tieba.baidu.com/hottopic/browse/topicList?res_type=1&red_tag=w0084651866'
 // 虎扑nba
 const hupunbaURL = 'https://bbs.hupu.com/all-nba'
+// 起点中文网月票榜
+const qidianURL = 'https://www.qidian.com/rank/recom'
+// 什么值得买白菜党
+const shenmezhidemaiURL = 'https://search.smzdm.com/?c=home&s=%E7%99%BD%E8%8F%9C%E5%85%9A&v=a'
 
 module.exports = {
     douban: {
@@ -154,6 +160,26 @@ module.exports = {
             "weblocalname": "虎扑NBA",
             "weblogo": "hupu.png",
             "tag": "hot"
+        }
+    },
+    qidian: {
+        func: getqidian,
+        url: qidianURL,
+        info: {
+            "webname": "qidian",
+            "weblocalname": "起点中文网",
+            "weblogo": "qidian.png",
+            "tag": "other"
+        }
+    },
+    shenmezhidemai: {
+        func: getshenmezhidemai,
+        url: shenmezhidemaiURL,
+        info: {
+            "webname": "shenmezhidemai",
+            "weblocalname": "什么值得买",
+            "weblogo": "shenmezhidemai.png",
+            "tag": "other"
         }
     }
 }
