@@ -4,7 +4,6 @@ const getSubscriptionByName = require('../mongoose/operations/getSubscriptionByN
 const getDatabaseHotData = require('../mongoose/operations/getDatabaseHotData')
 const getWebById = require('../mongoose/operations/getWebById')
 
-/* GET home page. */
 router.get('/:username', function (req, res) {
     let username = req.params.username
     if (username) {
