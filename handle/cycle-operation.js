@@ -6,6 +6,8 @@ const createallweb = require('./oprations/createAllWeb');
 const getdata = require('./oprations/getHotData');
 // 获取豆瓣数据方法
 let getdoubandata = require('./find-data/douban');
+//爬虫总开关
+const toggle = true
 
 // bilibili http头部参数
 const bilibiliHeader = {
@@ -51,6 +53,8 @@ let needToLoopWebs = [{
     name: 'qidian'
 }, {
     name: 'shenmezhidemai'
+}, {
+    name: 'taptap'
 }]
 
 // 生成网站对象,默认日更,每天1时2分3秒
@@ -99,7 +103,9 @@ async function scheduleCronstyle() {
 // 依据url生成网站
 createallweb().then(() => {
     // 开始定时任务
-    scheduleCronstyle();
+    if (toggle) {
+        scheduleCronstyle();
+    }
 
     // 测试
     // getdata({

@@ -12,6 +12,7 @@ const getdoubannews = require('../find-data/doubannews')
 const gethupunba = require('../find-data/hupunba')
 const getqidian = require('../find-data/qidian')
 const getshenmezhidemai = require('../find-data/shenmezhidemai')
+const gettaptap = require('../find-data/taptap')
 
 // 微博
 const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot'
@@ -41,6 +42,8 @@ const hupunbaURL = 'https://bbs.hupu.com/all-nba'
 const qidianURL = 'https://www.qidian.com/rank/recom'
 // 什么值得买白菜党
 const shenmezhidemaiURL = 'https://search.smzdm.com/?c=home&s=%E7%99%BD%E8%8F%9C%E5%85%9A&v=a'
+// taptap
+const taptapURL = 'https://www.taptap.com/top/download'
 
 module.exports = {
     douban: {
@@ -180,6 +183,16 @@ module.exports = {
             "weblocalname": "什么值得买",
             "weblogo": "shenmezhidemai.png",
             "tag": "other"
+        }
+    },
+    taptap: {
+        func: gettaptap,
+        url: taptapURL,
+        info: {
+            "webname": "taptap",
+            "weblocalname": "TapTap",
+            "weblogo": "taptap.png",
+            "tag": "hot"
         }
     }
 }
