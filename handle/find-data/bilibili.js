@@ -7,7 +7,7 @@ function getData(html) {
     let $ = cheerio.load(html.text);
     $('.rank-item').find('.content').find('.info').each((index, element) => {
         let content = $(element).find('a')
-        let infoURL = 'https:' + content.attr('href')
+        let infoURL = content.attr('href')
         let infoContent = content.text()
         let hot = {
             infoContent,
