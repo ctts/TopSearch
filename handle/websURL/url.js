@@ -13,6 +13,7 @@ const gethupunba = require('../find-data/hupunba')
 const getqidian = require('../find-data/qidian')
 const getshenmezhidemai = require('../find-data/shenmezhidemai')
 const gettaptap = require('../find-data/taptap')
+const getithome = require('../find-data/ithome')
 
 // 微博
 const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot'
@@ -44,6 +45,8 @@ const qidianURL = 'https://www.qidian.com/rank/recom'
 const shenmezhidemaiURL = 'https://search.smzdm.com/?c=home&s=%E7%99%BD%E8%8F%9C%E5%85%9A&v=a'
 // taptap
 const taptapURL = 'https://www.taptap.com/top/download'
+// it之家
+const ithomeURL = 'https://www.ithome.com/'
 
 module.exports = {
     douban: {
@@ -193,6 +196,16 @@ module.exports = {
             "weblocalname": "TapTap",
             "weblogo": "taptap.png",
             "tag": "hot"
+        }
+    },
+    ithome: {
+        func: getithome,
+        url: ithomeURL,
+        info: {
+            "webname": "ithome",
+            "weblocalname": "IT之家",
+            "weblogo": "ithome.png",
+            "tag": "other"
         }
     }
 }

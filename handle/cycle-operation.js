@@ -55,6 +55,8 @@ let needToLoopWebs = [{
     name: 'shenmezhidemai'
 }, {
     name: 'taptap'
+}, {
+    name: 'ithome'
 }]
 
 // 生成网站对象,默认日更,每天1时2分3秒
