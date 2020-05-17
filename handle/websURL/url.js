@@ -14,6 +14,7 @@ const getqidian = require('../find-data/qidian')
 const getshenmezhidemai = require('../find-data/shenmezhidemai')
 const gettaptap = require('../find-data/taptap')
 const getithome = require('../find-data/ithome')
+// const getjuejin = require('../find-data/juejin')
 
 // 微博
 const weiboURL = 'https://s.weibo.com/top/summary?cate=realtimehot'
@@ -47,6 +48,8 @@ const shenmezhidemaiURL = 'https://search.smzdm.com/?c=home&s=%E7%99%BD%E8%8F%9C
 const taptapURL = 'https://www.taptap.com/top/download'
 // it之家
 const ithomeURL = 'https://www.ithome.com/'
+// 掘金
+// const juejinURL = 'https://juejin.im/timeline?sort=three_days_hottest'
 
 module.exports = {
     douban: {
@@ -207,5 +210,15 @@ module.exports = {
             "weblogo": "ithome.png",
             "tag": "other"
         }
-    }
+    },
+    // juejin: {
+    //     func: getjuejin,
+    //     url: juejinURL,
+    //     info: {
+    //         "webname": "juejin",
+    //         "weblocalname": "掘金社区",
+    //         "weblogo": "juejin.png",
+    //         "tag": "hot"
+    //     }
+    // }
 }

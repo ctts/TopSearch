@@ -13,6 +13,7 @@ function getData(html) {
             infoContent,
             infoURL,
         }
+        console.log(hot)
         hotTitle.push(hot);
     })
     return hotTitle;

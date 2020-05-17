@@ -21,6 +21,28 @@ const wuaipojieHeader = {
     'Host': 'www.52pojie.cn',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
 }
+// const juejinHeader = {
+//     'Host': 'web-api.juejin.im',
+//     'Origin': 'https://juejin.im',
+//     'User-Agent': 'Mozilla / 5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 80.0 .3987 .122 Safari / 537.36',
+//     'Referer': 'https: //juejin.im/?sort=three_days_hottest',
+//     'Sec-Fetch-Mode': 'cors',
+//     'X-Agent': 'Juejin/Web',
+//     'Cookie': `ab = {};
+//     gr_user_id = 3 d51baca - be97 - 4 a8e - be29 - d81f5408e2bc;
+//     _ga = GA1 .2 .752375647 .1555650393;
+//     SLARDAR_WEB_ID = 3805 d6eb - 500 b - 4 cf5 - 8 ab8 - 24e16 e809371;
+//     _gid = GA1 .2 .2013318248 .1583074338;
+//     Hm_lvt_93bbd335a208870aa1f296bcd6842e5e = 1583114983, 1583141307, 1583142787, 1583222941;
+//     gr_session_id_89669d96c88aefbc = aac27960 - 7 dba - 48 b7 - 8349 - 4491305 b741a;
+//     gr_cs1_aac27960 - 7 dba - 48 b7 - 8349 - 4491305 b741a = objectId % 3 A5cc41163518825251500e105;
+//     gr_session_id_89669d96c88aefbc_aac27960 - 7 dba - 48 b7 - 8349 - 4491305 b741a = true;
+//     auth = ;
+//     auth.sig = 25 Jg_aucc6SpX1VH8RlCoh6azLU;
+//     _gat = 1;
+//     QINGCLOUDELB = 908730662 bd97c21a55d59265be1718d9eb2c663a78c233d245e9356cc89386b | Xl5uo | Xl5uk;
+//     Hm_lpvt_93bbd335a208870aa1f296bcd6842e5e = 1583247009`
+// }
 
 // 需要循环的网站
 let needToLoopWebs = [{
@@ -57,7 +79,12 @@ let needToLoopWebs = [{
     name: 'taptap'
 }, {
     name: 'ithome'
-}]
+}, 
+// {
+//     name: 'juejin',
+//     header: juejinHeader
+// }
+]
 
 // 生成网站对象,默认日更,每天1时2分3秒
 function createWebData({
@@ -110,9 +137,9 @@ createallweb().then(() => {
     }
 
     // 测试
-    // getdata({
-    //         name: 'shenmezhidemai'
-    //     })
-    //     .then((result) => console.log(result))
-    //     .catch(err => console.log(err))
+    getdata({
+            name: 'juejin'
+        })
+        .then((result) => console.log(result))
+        .catch(err => console.log(err))
 }).catch(err => console.log(err))

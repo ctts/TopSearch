@@ -8,7 +8,7 @@ function verifyToken(header) {
         if (!token) {
             reject(false)
         }
-        jwt.verify(token, SECRET, (error, result) => {
+        jwt.verify(token, SECRET, (error) => {
             if (error) {
                 reject(false)
             } else {

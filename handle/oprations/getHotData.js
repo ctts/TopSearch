@@ -12,6 +12,7 @@ let getdata = async function ({
     header = {}
 }) {
     let webId = await findWebId(name)
+    if (!webs[name]) return
     let html = await getWebHTML(webs[name].url, header)
     let data = await webs[name].func(html)
     let result = await packingData(data, webId)

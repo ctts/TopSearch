@@ -5,7 +5,7 @@ var logger = require('morgan')
 var bodyParser = require('body-parser')
 const path = require('path')
 var app = express()
-// var verifyToken = require('./public/javascripts/verifyToken')
+var verifyToken = require('./public/javascripts/verifyToken')
 
 // 路由路径
 // var indexRouter = require('./routes/index')
@@ -61,17 +61,16 @@ app.all('*', function (req, res, next) {
     res.send(200)
   } else {
     //登录、主页、图片、插入历史不需要验证
-    // if (!req.url.match(/login|allweb|website|history\/insertHistory/)) {
-    //   let result = verifyToken(req.headers)
-    //   result.then(() => {
-    //     next()
-    //   }).catch(() => {
-    //     next(createError(401))
-    //   })
-    // } else {
-    //   next()
-    // }
-    next()
+    if (!req.url.match(/login|allweb|website|history\/insertHistory/)) {
+      let result = verifyToken(req.headers)
+      result.then(() => {
+        next()
+      }).catch(() => {
+        next(createError(401))
+      })
+    } else {
+      next()
+    }
   }
 })
 
