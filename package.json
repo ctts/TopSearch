@@ -17,7 +17,7 @@
     "morgan": "~1.9.1",
     "node-schedule": "^1.3.2",
     "nodemon": "^1.19.2",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.1",
     "superagent": "^5.1.0",
     "superagent-charset": "^1.2.0"
   },
